@@ -22,3 +22,5 @@ gradle-app.setting
 *.json
 *.xml
 *.csv
+*.lock
+*.bin
