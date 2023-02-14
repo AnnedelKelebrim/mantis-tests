@@ -24,3 +24,6 @@ gradle-app.setting
 *.csv
 *.lock
 *.bin
+*.bin
+*.lock
+*.properties
