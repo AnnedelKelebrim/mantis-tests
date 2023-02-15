@@ -23,11 +23,11 @@ public class RegistrationTests extends TestBase {
         String user = "username12345";
         String password = "password12345";
         app.registration().start(user, email);
-        List<MailMessage> mailMessages = app.mail().waitForMail(2,10000);
-        String confirmationLink = findConfirmationLink(mailMessages,email);
+        List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
+        String confirmationLink = findConfirmationLink(mailMessages, email);
         app.registration().finish(confirmationLink, password);
 
-       assertTrue(app.newSession().login(user,password));
+        assertTrue(app.newSession().login(user, password));
     }
 
     private String findConfirmationLink(List<MailMessage> mailMessages, String email) {

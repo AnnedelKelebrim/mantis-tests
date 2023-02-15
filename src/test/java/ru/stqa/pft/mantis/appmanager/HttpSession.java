@@ -24,7 +24,7 @@ public class HttpSession {
         httpClient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
     }
 
-    public boolean login (String username, String password) throws IOException {
+    public boolean login(String username, String password) throws IOException {
         HttpPost post = new HttpPost(app.getProperty("web.baseUrl") + "/login.php");
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("username", username));
@@ -34,7 +34,7 @@ public class HttpSession {
         post.setEntity(new UrlEncodedFormEntity(params));
         CloseableHttpResponse response = httpClient.execute(post);
         String body = getTextForm(response);
-        return body.contains(String.format("<span class=\"label hidden-xs label-default arrowed\">%s</span>", username));
+        return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
     }
 
     private String getTextForm(CloseableHttpResponse response) throws IOException {
