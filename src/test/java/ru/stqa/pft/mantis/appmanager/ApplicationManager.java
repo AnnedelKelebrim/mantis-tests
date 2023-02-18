@@ -19,9 +19,9 @@ public class ApplicationManager {
     private RegistrationHelper registrationHelper;
     private FTPHelper ftp;
     private MailHelper mailHelper;
+    private ChangePasswordHelper changePasswordHelper;
 
     public ApplicationManager(String browser) {
-
         this.browser = browser;
         properties = new Properties();
     }
@@ -53,8 +53,9 @@ public class ApplicationManager {
         }
         return registrationHelper;
     }
-    public FTPHelper ftp(){
-        if (ftp == null){
+
+    public FTPHelper ftp() {
+        if (ftp == null) {
             ftp = new FTPHelper(this);
         }
         return ftp;
@@ -75,10 +76,18 @@ public class ApplicationManager {
         }
         return wd;
     }
-    public MailHelper mail(){
-        if(mailHelper ==null){
+
+    public MailHelper mail() {
+        if (mailHelper == null) {
             mailHelper = new MailHelper(this);
         }
         return mailHelper;
+    }
+
+    public ChangePasswordHelper changePWhelper() {
+        if (changePasswordHelper == null) {
+            changePasswordHelper = new ChangePasswordHelper(this);
+        }
+        return changePasswordHelper;
     }
 }
