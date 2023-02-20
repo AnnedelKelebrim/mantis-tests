@@ -2,11 +2,15 @@ package ru.stqa.pft.mantis.appmanager;
 
 import org.openqa.selenium.By;
 
+import java.util.Properties;
+
 public class ChangePasswordHelper extends HelperBase {
 
     public ChangePasswordHelper(ApplicationManager app) {
         super(app);
     }
+
+    private String appName = app.getProperty("app.name");
 
     public void loginAsAdmin() {
         wd.get(app.getProperty("web.baseUrl") + "/login_page.php");
@@ -17,16 +21,17 @@ public class ChangePasswordHelper extends HelperBase {
     }
 
     public void goToManagePage() {
-        click(By.cssSelector("a[href=\"/mantisbt-2.25.4/manage_overview_page.php\""));
+        click(By.cssSelector("a[href=\"/" + appName + "/manage_overview_page.php\""));
     }
 
     public void goToManageUsers() {
-        click(By.cssSelector("a[href=\"/mantisbt-2.25.4/manage_user_page.php\""));
+        click(By.cssSelector("a[href=\"/" + appName + "/manage_user_page.php\""));
     }
 
     private void goToUser() {
         click(By.xpath("//tr[2]/td/a"));
     }
+
     public void userPage() {
         loginAsAdmin();
         goToManagePage();
